@@ -1,11 +1,11 @@
 /* global Log, Module, moment, config */
 /* Magic Mirror
- * Module: Clock
+ * Module: MMM-TimeTreeEvent
  *
- * By Michael Teeuw http://michaelteeuw.nl
+ * By sabo10o29
  * MIT Licensed.
  */
-Module.register("timetree",{
+Module.register("MMM-TimeTreeEvent",{
 	// Module config defaults.
 	defaults: {
 
