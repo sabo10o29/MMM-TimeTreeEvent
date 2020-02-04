@@ -16,8 +16,7 @@ Module.register("MMM-TimeTreeEvent",{
 		include: "creator,label,attendees",
 		timeformat: "HH:mm",
 		upadteinterval: 3 * 60 * 60 *1000, //msec
-		eventwordcount: 15,
-		//The number of days to get event.
+		eventwordcount: 20,
 		days: 1,
 
 	},
