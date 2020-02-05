@@ -33,13 +33,14 @@ Module.register("MMM-TimeTreeEvent",{
 	},
 	// Define start sequence.
 	start: function() {
-		//TODO: 表示する際にアニメーションをつける
 		var self = this;
 		Log.info("Starting module: " + self.name);
-		self.updateEvent();
+
 		setInterval(function() {
-			self.updateEvent();
+			that.sendSocketNotification("GET-TIMETREE-EVENT", this.getOptions());
 		}, self.config.upadteinterval);
+
+		this.sendSocketNotification("GET-TIMETREE-EVENT", this.getOptions());
 	},
 
 	//描画内容を更新するための設定
@@ -153,42 +154,6 @@ Module.register("MMM-TimeTreeEvent",{
 		return eventDiv;
 	},
 
-	updateEvent: function() {
-		this.fetchData(this.getUrl())
-			.then(data => {
-				this.todayEvents = [];
-				for (var i = 0; i < data.data.length; i ++) {
-					const o = new EventObject(data.data[i]);
-					this.todayEvents.push(o);
-				}
-				Log.info("Num of today event: "+this.todayEvents.length);
-			})
-			.catch(function(request) {
-				Log.error("Could not load data ... ", request);
-			})
-			.finally(() => this.updateDom());
-	},
-
-	fetchData: function(url, method = "GET", data = null) {
-		const self = this;
-		return new Promise(function(resolve, reject) {
-			Log.info(url);
-			var request = new XMLHttpRequest();
-			request.open(method, url, true);
-			request.setRequestHeader("Authorization", "Bearer " + self.config.appid);
-			request.onreadystatechange = function() {
-				if (this.readyState === 4) {
-					if (this.status === 200) {
-						resolve(JSON.parse(this.response));
-					} else {
-						reject(request);
-					}
-				}
-			};
-			request.send();
-		});
-	},
-
 	getUrl() {
 		return this.config.apiBase + this.config.calendarsEndpoint + "/" +this.config.calenderid + "/" +this.config.eventEndpoint + this.getParams();
 	},
@@ -199,6 +164,32 @@ Module.register("MMM-TimeTreeEvent",{
 		params += "&days=" + this.config.days;
 		params += "&include=" + this.config.include;
 		return params;
+	},
+
+	getHeaders() {
+		return headers = {
+			"Authorization": "Bearer " + this.config.appid
+		};
+	},
+
+	getOptions() {
+		return options = {
+			url: this.getUrl(),
+			method: "GET",
+			headers: this.getHeaders()
+		};
+	},
+
+	socketNotificationReceived: function(notification, payload) {
+		if (notification === "GOT-TIMETREE-EVENT" && payload != null) {
+			Log.info("Success to get timetree event!!");
+			this.todayEvents = [];
+			for (var i = 0; i < payload.result.data.length; i ++) {
+				const o = new EventObject(payload.result.data[i]);
+				this.todayEvents.push(o);
+			}
+			this.updateDom(1000);
+		}
 	}
 
 });
