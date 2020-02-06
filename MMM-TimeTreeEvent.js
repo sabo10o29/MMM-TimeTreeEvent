@@ -45,23 +45,60 @@ Module.register("MMM-TimeTreeEvent",{
 	},
 
 	getDom: function() {
-		var wrapper = document.createElement("ul");
+		// var w = document.createElement("div");
+
+		// var title = document.createElement("h3");
+		// title.innerHTML = "Today's event";
+
+		// var wrapper = document.createElement("ul");
+		// wrapper.className = "timetree";
+
+		// for(var i = 0; i < this.todayEvents.length; i++){
+		// 	var event = this.todayEvents[i];
+		// 	var eventLi = document.createElement("li");
+		// 	eventLi.className = "event";
+
+		// 	if(event.all_day){
+		// 		eventLi.appendChild(this.getAlldayEvent(event));
+		// 	}else{
+		// 		eventLi.appendChild(this.getTimeEvent(event));
+		// 	}
+		// 	wrapper.appendChild(eventLi);
+
+		// }
+		// w.appendChild(title);
+		// w.appendChild(wrapper);
+		// return w;
+		var w = document.createElement("div");
+
+		var title = document.createElement("text");
+		title.innerHTML = "Today's event ¥ ¥ ";
+
+		var wrapper = document.createElement("table");
 		wrapper.className = "timetree";
 
 		for(var i = 0; i < this.todayEvents.length; i++){
 			var event = this.todayEvents[i];
-			var eventLi = document.createElement("li");
-			eventLi.className = "event";
+			var eventLi = document.createElement("tr");
+			// eventLi.className = "event";
 
 			if(event.all_day){
-				eventLi.appendChild(this.getAlldayEvent(event));
+				var allday = document.createElement("td");
+				allday.innerHTML = "All-day";
+				var content = document.createElement("td");
+				content.innerHTML = this.getContentText(event);
+				eventLi.appendChild(allday);
+				eventLi.appendChild(content);
 			}else{
+
 				eventLi.appendChild(this.getTimeEvent(event));
 			}
 			wrapper.appendChild(eventLi);
 
 		}
-		return wrapper;
+		w.appendChild(title);
+		w.appendChild(wrapper);
+		return w;
 	},
 
 	getContentText: function(event) {
@@ -117,8 +154,9 @@ Module.register("MMM-TimeTreeEvent",{
 
 	getTimeEvent: function(event) {
 		var eventDiv = document.createElement("div");
-		eventDiv.className = "event";
+		// eventDiv.className = "event";
 		//Create time
+		var d = document.createElement("td");
 		var time = document.createElement("ul");
 		time.className = "time";
 		var st = document.createElement("li");
@@ -130,12 +168,13 @@ Module.register("MMM-TimeTreeEvent",{
 		time.appendChild(st);
 		time.appendChild(to);
 		time.appendChild(end);
+		d.appendChild(time);
 		//Create content
-		var content = document.createElement("text");
-		content.className = "time_content";
+		var content = document.createElement("td");
+		// content.className = "time_content";
 		content.innerHTML = this.getContentText(event);
 		//
-		eventDiv.appendChild(time);
+		eventDiv.appendChild(d);
 		eventDiv.appendChild(content);
 		return eventDiv;
 	},

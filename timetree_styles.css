@@ -1,65 +1,25 @@
-
-ul.timetree {
-  -ms-transform: translate(0, -3px); /* IE 9 */
-  -webkit-transform: translate(0, -3px); /* Safari */
-  transform: translate(0, -3px);
-  list-style: none;
-  padding: 0;
+text {
+  border-bottom: solid 1px white;
 }
 
-li.event{
-  line-height: 1;
-  list-style: none;
-  padding-bottom: 20px;
+table.timetree{
+  font-size: 60%;
+  width:  50%;
+  vertical-align: middle;
+  table-layout: fixed;
+  vertical-align: middle;
+  border: solid 1px white;
 }
 
-div.event{
-  width: 400px;
-  display: inline-block;
-  padding-top: 0px;
-  white-space: nowrap;
-  /* overflow: hidden;
-  text-overflow: ellipsis; */
-}
-
-ul.time{
-  float: left;
-  padding: 0;
-  padding-right: 15px;
-  padding-left: 4px;
-  list-style: none;
-  text-align: center;
+th,td {
+  border: solid 1px white;          /* 枠線指定 */
+  text-align: left;
+  vertical-align: middle;
 }
 
 ul.time li{
-  font-size: 60%;
-  line-height: 0.9;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-ul.allday{
-  float: left;
-  padding: 0;
-  padding-right: 10px;
+  padding-right: 40px;
   list-style: none;
+  line-height: 0.8;
   text-align: center;
-  font-size: 70%;
-  line-height: 1.5;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-text.time_content {
-  line-height: 2;
-  font-size: 80%;
-  vertical-align: middle;
-  text-align: left
-}
-
-text.allday_content {
-  line-height: 1;
-  font-size: 80%;
-  vertical-align: middle;
-  text-align: left
 }

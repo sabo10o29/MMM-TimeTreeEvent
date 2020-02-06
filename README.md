@@ -40,7 +40,7 @@ https://timetreeapp.com/personal_access_tokens
 ```
 [[1] Get calender id api](https://developers.timetreeapp.com/ja/docs/api#get-calendarscalendar_id)  
 
-## Configuration
+## Optional Configuration
 
 | Option               | Description
 |--------------------- |-----------
