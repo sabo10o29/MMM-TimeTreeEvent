@@ -10,13 +10,14 @@ Module.register("MMM-TimeTreeEvent",{
 	defaults: {
 
 		apiBase: "https://timetreeapis.com/",
-		calendarsEndpoint: "calendars",
-		eventEndpoint: "upcoming_events",
+		calendars: "calendars",
+		endpoint: "upcoming_events",
 		timezone: "Asia/Tokyo",
 		include: "creator,label,attendees",
-		timeformat: "HH:mm",
-		upadteinterval: 3 * 60 * 60 *1000, //msec
-		eventwordcount: 20,
+		animationSpeed: 1000,
+		upadteInterval: 3 * 60 * 60 *1000, //msec
+		timeFormat: "HH:mm",
+		eventWordCount: 20,
 		days: 1,
 
 	},
@@ -38,13 +39,11 @@ Module.register("MMM-TimeTreeEvent",{
 
 		setInterval(function() {
 			that.sendSocketNotification("GET-TIMETREE-EVENT", this.getOptions());
-		}, self.config.upadteinterval);
+		}, self.config.upadteInterval);
 
 		this.sendSocketNotification("GET-TIMETREE-EVENT", this.getOptions());
 	},
 
-	//描画内容を更新するための設定
-	// Override dom generator.
 	getDom: function() {
 		var wrapper = document.createElement("ul");
 		wrapper.className = "timetree";
@@ -66,20 +65,7 @@ Module.register("MMM-TimeTreeEvent",{
 	},
 
 	getContentText: function(event) {
-		var content = "";
-		for(var j = 0; j < event.attendee_ids.length; j++){
-			for(var k = 0; k < this.config.users.length; k++){
-				var id = this.config.users[k].id;
-				if(id == event.attendee_ids[j]){
-					content += this.config.users[k].initial;
-				}
-			}
-			if(j != event.attendee_ids.length - 1){
-				content += ", ";
-			}
-		}
-		content += ": " + event.title;
-		content = this.multByteStringSlice(content, this.config.eventwordcount);
+		var content = this.multByteStringSlice(event.title, this.config.eventWordCount);
 		return content;
 	},
 
@@ -136,11 +122,11 @@ Module.register("MMM-TimeTreeEvent",{
 		var time = document.createElement("ul");
 		time.className = "time";
 		var st = document.createElement("li");
-		st.innerHTML = moment(event.start_at).format(this.config.timeformat);
+		st.innerHTML = moment(event.start_at).format(this.config.timeFormat);
 		var to = document.createElement("li");
 		to.innerHTML = "-";
 		var end = document.createElement("li");
-		end.innerHTML = moment(event.end_at).format(this.config.timeformat);
+		end.innerHTML = moment(event.end_at).format(this.config.timeFormat);
 		time.appendChild(st);
 		time.appendChild(to);
 		time.appendChild(end);
@@ -155,7 +141,7 @@ Module.register("MMM-TimeTreeEvent",{
 	},
 
 	getUrl() {
-		return this.config.apiBase + this.config.calendarsEndpoint + "/" +this.config.calenderid + "/" +this.config.eventEndpoint + this.getParams();
+		return this.config.apiBase + this.config.calendars + "/" +this.config.calenderid + "/" +this.config.endpoint + this.getParams();
 	},
 
 	getParams() {
@@ -188,7 +174,7 @@ Module.register("MMM-TimeTreeEvent",{
 				const o = new EventObject(payload.result.data[i]);
 				this.todayEvents.push(o);
 			}
-			this.updateDom(1000);
+			this.updateDom(this.config.animationSpeed);
 		}
 	}
 

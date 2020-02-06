@@ -4,10 +4,10 @@ Display your TimeTree event on your magic mirror.
 ## Features
 
 ## Screenshot
-- `Sample screenshot 1`
+- `Sample screenshot 1`  
 ![Screenshot](https://github.com/sabo10o29/MMM-TimeTreeEvent/blob/master/sc1.png)
 
-- `Sample screenshot 2`
+- `Sample screenshot 2`  
 ![Screenshot](https://github.com/sabo10o29/MMM-TimeTreeEvent/blob/master/sc2.png)
 
 
@@ -35,27 +35,17 @@ https://timetreeapp.com/personal_access_tokens
         appid: "***Your api key***",
         //You need to get the target calender id with Get calender id api[1]
         calenderid: "***Calender id***",
-        users: [
-            {
-                //Optinal, If you want to display your name, need to get your user id with Get user id api[2]
-                id: "***Your user id***",
-                initial: "Display name"
-            },
-            {
-                //Optional, If you want to display the attendees on your magic mirror,
-                //you need to check them ids. 
-                id: "***Id of an attendee to the calendar***",
-                initial: "Display name"
-            },
-        ],
     }
 },
 ```
 [[1] Get calender id api](https://developers.timetreeapp.com/ja/docs/api#get-calendarscalendar_id)  
-[[2] Get user id api](https://developers.timetreeapp.com/ja/docs/api#get-user)
 
 ## Configuration
 
 | Option               | Description
 |--------------------- |-----------
 | `upadteinterval`     | Update interval to get event from TimeTree.  <br><br>**Type:** `int` <br> **Default value:** `3 * 60 * 60 *1000 (3 hours)`
+| `timeFormat`         | Display the scheduled time based on [moment.js](https://momentjs.com/docs/). <br><br>**Type:** `String` <br> **Default value:** `HH:mm`
+| `eventWordCount`     | Maximum length to show the event title. <br><br>**Type:** `int` <br> **Default value:** `20`
+| `days`               | Get events from today to n-th day. <br><br>**Type:** `int` <br> **Default value:** `1`
+
