@@ -3,23 +3,28 @@ text {
 }
 
 table.timetree{
-  font-size: 60%;
-  width:  50%;
+  font-size: 80%;
+  width:  30%;
+  padding-top: 15px;
   vertical-align: middle;
-  table-layout: fixed;
-  vertical-align: middle;
-  border: solid 1px white;
+  white-space: nowrap;
+  text-align: left;
 }
 
-th,td {
-  border: solid 1px white;          /* 枠線指定 */
-  text-align: left;
-  vertical-align: middle;
+td.time {
+  font-size: 80%;
+  width: 100px;
+  padding-right: 20px;
+  padding-left: 10px;
+  text-align: center;
+}
+
+ul.time{
+  margin: 0px;
+  padding: 0px;
 }
 
 ul.time li{
-  padding-right: 40px;
   list-style: none;
   line-height: 0.8;
-  text-align: center;
 }
