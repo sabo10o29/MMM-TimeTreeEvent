@@ -40,12 +40,12 @@ https://timetreeapp.com/personal_access_tokens
 ```
 [[1] Get calender id api](https://developers.timetreeapp.com/ja/docs/api#get-calendarscalendar_id)  
 
-## Configuration
+## Optional Configuration
 
 | Option               | Description
 |--------------------- |-----------
 | `upadteinterval`     | Update interval to get event from TimeTree.  <br><br>**Type:** `int` <br> **Default value:** `3 * 60 * 60 *1000 (3 hours)`
 | `timeFormat`         | Display the scheduled time based on [moment.js](https://momentjs.com/docs/). <br><br>**Type:** `String` <br> **Default value:** `HH:mm`
-| `eventWordCount`     | Maximum length to show the event title. <br><br>**Type:** `int` <br> **Default value:** `20`
+| `eventWordCount`     | Maximum length to show the event title. <br><br>**Type:** `int` <br> **Default value:** `10`
 | `days`               | Get events from today to n-th day. <br><br>**Type:** `int` <br> **Default value:** `1`
 

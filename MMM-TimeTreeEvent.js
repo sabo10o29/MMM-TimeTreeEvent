@@ -17,7 +17,7 @@ Module.register("MMM-TimeTreeEvent",{
 		animationSpeed: 1000,
 		upadteInterval: 3 * 60 * 60 *1000, //msec
 		timeFormat: "HH:mm",
-		eventWordCount: 20,
+		eventWordCount: 10,
 		days: 1,
 
 	},
@@ -45,22 +45,50 @@ Module.register("MMM-TimeTreeEvent",{
 	},
 
 	getDom: function() {
-		var wrapper = document.createElement("ul");
-		wrapper.className = "timetree";
+		var wrapper = document.createElement("div");
+
+		var title = document.createElement("text");
+		title.innerHTML = "Today's event　　";
+
+		var table = document.createElement("table");
+		table.className = "timetree";
+		if(this.data.position == "top_right" || this.data.position == "bottom_right" ){
+			table.style.marginLeft = "auto";
+		}
 
 		for(var i = 0; i < this.todayEvents.length; i++){
 			var event = this.todayEvents[i];
-			var eventLi = document.createElement("li");
-			eventLi.className = "event";
-
+			var eventItem = document.createElement("tr");
+			// Add time
+			var time = document.createElement("td");
+			time.className = "time";
 			if(event.all_day){
-				eventLi.appendChild(this.getAlldayEvent(event));
+				time.innerHTML = "All-day";
 			}else{
-				eventLi.appendChild(this.getTimeEvent(event));
+				var timeList = document.createElement("ul");
+				timeList.className = "time";
+				var st = document.createElement("li");
+				st.innerHTML = moment(event.start_at).format(this.config.timeFormat);
+				var to = document.createElement("li");
+				to.innerHTML = "-";
+				var end = document.createElement("li");
+				end.innerHTML = moment(event.end_at).format(this.config.timeFormat);
+				timeList.appendChild(st);
+				timeList.appendChild(to);
+				timeList.appendChild(end);
+				time.appendChild(timeList);
 			}
-			wrapper.appendChild(eventLi);
+			eventItem.appendChild(time);
+			//Add event content
+			var content = document.createElement("td");
+			content.className = "content";
+			content.innerHTML = this.getContentText(event);
+			eventItem.appendChild(content);
 
+			table.appendChild(eventItem);
 		}
+		wrapper.appendChild(title);
+		wrapper.appendChild(table);
 		return wrapper;
 	},
 
@@ -94,50 +122,6 @@ Module.register("MMM-TimeTreeEvent",{
 			str += "...";
 		}
 		return str;
-	},
-
-	getAlldayEvent: function(event) {
-		var eventDiv = document.createElement("div");
-		eventDiv.className = "event";
-		//Create time
-		var alldayList = document.createElement("ul");
-		alldayList.className = "allday";
-		var allday = document.createElement("li");
-		allday.innerHTML = "All-day";
-		//Create content
-		var content = document.createElement("text");
-		content.className = "allday_content";
-		content.innerHTML = this.getContentText(event);
-		//
-		alldayList.appendChild(allday);
-		eventDiv.appendChild(alldayList);
-		eventDiv.appendChild(content);
-		return eventDiv;
-	},
-
-	getTimeEvent: function(event) {
-		var eventDiv = document.createElement("div");
-		eventDiv.className = "event";
-		//Create time
-		var time = document.createElement("ul");
-		time.className = "time";
-		var st = document.createElement("li");
-		st.innerHTML = moment(event.start_at).format(this.config.timeFormat);
-		var to = document.createElement("li");
-		to.innerHTML = "-";
-		var end = document.createElement("li");
-		end.innerHTML = moment(event.end_at).format(this.config.timeFormat);
-		time.appendChild(st);
-		time.appendChild(to);
-		time.appendChild(end);
-		//Create content
-		var content = document.createElement("text");
-		content.className = "time_content";
-		content.innerHTML = this.getContentText(event);
-		//
-		eventDiv.appendChild(time);
-		eventDiv.appendChild(content);
-		return eventDiv;
 	},
 
 	getUrl() {
