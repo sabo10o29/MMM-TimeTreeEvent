@@ -1,0 +1,21 @@
+{
+    "name": "MMM-TimeTreeEvent",
+    "version": "1.0.0",
+    "description": "MagicMirror 2 module to show your events using the TimeTree API.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sabo10o29/MMM-TimeTreeEvent"
+    },
+    "keywords": [
+        "magic mirror",
+        "smart mirror",
+        "event",
+        "TimeTree"
+    ],
+    "author": "sabo10o29",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/sabo10o29/MMM-TimeTreeEvent/issues"
+    },
+    "homepage": "https://github.com/sabo10o29/MMM-TimeTreeEvent#readme"
+}

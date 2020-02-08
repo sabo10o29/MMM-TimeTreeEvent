@@ -1,8 +1,7 @@
-/* global Log, Module, moment, config */
 /* Magic Mirror
  * Module: MMM-TimeTreeEvent
  *
- * By sabo10o29
+ * By sabo10o29 https://github.com/sabo10o29
  * MIT Licensed.
  */
 Module.register("MMM-TimeTreeEvent",{

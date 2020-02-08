@@ -1,7 +1,7 @@
-/* Magic Mirror Module: MMM-TimeTreeEvent helper
+/* Magic Mirror Module: MMM-TimeTreeEvent
  * Version: 1.0.0
  *
- * By Yoshikazu Murase https://github.com/sabo10o29
+ * By sabo10o29 https://github.com/sabo10o29
  * MIT Licensed.
  */
 
