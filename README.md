@@ -30,6 +30,7 @@ https://timetreeapp.com/personal_access_tokens
 ```javascript
 {
     module: "MMM-TimeTreeEvent",
+    //Positions of *_bar and *_third are not support.
     position: "top_left",
     config: {
         appid: "***Your api key***",
@@ -48,4 +49,5 @@ https://timetreeapp.com/personal_access_tokens
 | `timeFormat`         | Display the scheduled time based on [moment.js](https://momentjs.com/docs/). <br><br>**Type:** `String` <br> **Default value:** `HH:mm`
 | `eventWordCount`     | Maximum length to show the event title. <br><br>**Type:** `int` <br> **Default value:** `10`
 | `days`               | Get events from today to n-th day. <br><br>**Type:** `int` <br> **Default value:** `1`
+| `title`              | Title name <br><br>**Type:** `String` <br> **Default value:** `Today's event　　`
 

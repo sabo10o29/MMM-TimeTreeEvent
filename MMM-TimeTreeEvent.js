@@ -19,6 +19,7 @@ Module.register("MMM-TimeTreeEvent",{
 		timeFormat: "HH:mm",
 		eventWordCount: 10,
 		days: 1,
+		title: "Today's event　　",
 
 	},
 
@@ -48,7 +49,7 @@ Module.register("MMM-TimeTreeEvent",{
 		var wrapper = document.createElement("div");
 
 		var title = document.createElement("text");
-		title.innerHTML = "Today's event　　";
+		title.innerHTML = this.config.title;
 
 		var table = document.createElement("table");
 		table.className = "timetree";
