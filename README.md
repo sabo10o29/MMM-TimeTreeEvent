@@ -5,10 +5,10 @@ Display your TimeTree event on your magic mirror.
 
 ## Screenshot
 - `Sample screenshot 1`  
-![Screenshot](https://github.com/sabo10o29/MMM-TimeTreeEvent/blob/master/sc1.png)
+![Screenshot](https://github.com/sabo10o29/MMM-TimeTreeEvent/blob/master/sc01.png)
 
 - `Sample screenshot 2`  
-![Screenshot](https://github.com/sabo10o29/MMM-TimeTreeEvent/blob/master/sc2.png)
+![Screenshot](https://github.com/sabo10o29/MMM-TimeTreeEvent/blob/master/sc02.png)
 
 
 ## UPDATE
