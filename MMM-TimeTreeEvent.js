@@ -63,6 +63,7 @@ Module.register("MMM-TimeTreeEvent",{
 		for(var i = 0; i < this.todayEvents.length; i++){
 			var event = this.todayEvents[i];
 			var eventItem = document.createElement("tr");
+			eventItem.className = "bright";
 			// Add time
 			var time = document.createElement("td");
 			time.className = "time";
