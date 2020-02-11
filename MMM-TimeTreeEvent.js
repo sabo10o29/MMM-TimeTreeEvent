@@ -46,6 +46,10 @@ Module.register("MMM-TimeTreeEvent",{
 
 	getDom: function() {
 		var wrapper = document.createElement("div");
+		if(this.todayEvents.length == 0){
+			Log.info("There are no delay line to your target.");
+			return wrapper;
+		}
 
 		var title = document.createElement("text");
 		title.innerHTML = this.config.title;
@@ -155,6 +159,7 @@ Module.register("MMM-TimeTreeEvent",{
 			Log.info("Success to get timetree event!!");
 			this.todayEvents = [];
 			for (var i = 0; i < payload.result.data.length; i ++) {
+				Log.info(payload.result.data[i]);
 				const o = new EventObject(payload.result.data[i]);
 				this.todayEvents.push(o);
 			}
