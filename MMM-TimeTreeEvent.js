@@ -38,7 +38,7 @@ Module.register("MMM-TimeTreeEvent",{
 		Log.info("Starting module: " + self.name);
 
 		setInterval(function() {
-			that.sendSocketNotification("GET-TIMETREE-EVENT", this.getOptions());
+			self.sendSocketNotification("GET-TIMETREE-EVENT", self.getOptions());
 		}, self.config.upadteInterval);
 
 		this.sendSocketNotification("GET-TIMETREE-EVENT", this.getOptions());
@@ -160,7 +160,6 @@ Module.register("MMM-TimeTreeEvent",{
 			Log.info("Success to get timetree event!!");
 			this.todayEvents = [];
 			for (var i = 0; i < payload.result.data.length; i ++) {
-				Log.info(payload.result.data[i]);
 				const o = new EventObject(payload.result.data[i]);
 				this.todayEvents.push(o);
 			}
