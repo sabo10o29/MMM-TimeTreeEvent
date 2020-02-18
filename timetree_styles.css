@@ -5,11 +5,10 @@ text {
 table.timetree{
   font-size: 80%;
   width:  30%;
-  /* padding-top: 5px; */
   vertical-align: middle;
   white-space: nowrap;
   text-align: left;
-  border-spacing: 0px 15px;
+  border-spacing: 0px 10px;
 }
 
 td.time {
@@ -21,11 +20,15 @@ td.time {
 }
 
 ul.time{
-  margin: 0px;
   padding: 0px;
+  margin: 0px;
 }
 
 ul.time li{
   list-style: none;
-  line-height: 0.8;
+  line-height: 0.7;
+}
+
+ul.time li:empty{
+  height:5px
 }

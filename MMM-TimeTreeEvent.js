@@ -68,7 +68,16 @@ Module.register("MMM-TimeTreeEvent",{
 			var time = document.createElement("td");
 			time.className = "time";
 			if(event.all_day){
-				time.innerHTML = "All-day";
+				var timeList = document.createElement("ul");
+				timeList.className = "time";
+				var st = document.createElement("li");
+				var to = document.createElement("li");
+				to.innerHTML = "All-day";
+				var end = document.createElement("li");
+				timeList.appendChild(st);
+				timeList.appendChild(to);
+				timeList.appendChild(end);
+				time.appendChild(timeList);
 			}else{
 				var timeList = document.createElement("ul");
 				timeList.className = "time";
