@@ -56,4 +56,5 @@ https://timetreeapp.com/personal_access_tokens
 | `eventWordCount`     | Maximum length to show the event title. <br><br>**Type:** `int` <br> **Default value:** `10`
 | `days`               | Get events from today to n-th day. <br><br>**Type:** `int` <br> **Default value:** `1`
 | `title`              | Title name <br><br>**Type:** `String` <br> **Default value:** `Today's event　　`
+| `timezone`           | Timezone. The format is according to the [Time Zone Database](https://www.iana.org/time-zones). <br><br>**Type:** `String` <br> **Default value:** `Asia/Tokyo`
 
