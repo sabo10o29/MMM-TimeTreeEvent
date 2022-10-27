@@ -19,6 +19,6 @@
     },
     "homepage": "https://github.com/sabo10o29/MMM-TimeTreeEvent#readme",
     "dependencies": {
-        "request": "^2.88.2"
+        "axios": "^1.1.3"
     }
 }

@@ -1,3 +1,5 @@
 # Apple network share
+/node_modules
 .AppleDouble/
 .DS_Store
+package-lock.json

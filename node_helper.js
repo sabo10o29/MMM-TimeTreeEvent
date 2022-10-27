@@ -6,7 +6,7 @@
  */
 
 var NodeHelper = require("node_helper");
-var request = require("request");
+var axios = require('axios');
 
 module.exports = NodeHelper.create({
 
@@ -17,22 +17,16 @@ module.exports = NodeHelper.create({
 	},
 
 	getTimeTreeEventData: function(payload) {
-
 		var that = this;
-		this.url = payload.url;
-
-		request(payload, function(error, response, body) {
-			var result = JSON.parse(body);
-
-			if (!error && response.statusCode == 200) {
-				that.result = result;
-			} else {
-				Log.info("Failed to get time tree event data!");
-				that.result = null;
-			}
-
-			that.sendSocketNotification("GOT-TIMETREE-EVENT", {"url": that.url, "result": that.result});
-		});
+		axios.get(payload.url, {
+			headers: payload.headers
+		  })
+		  .then(function (response) {
+			that.sendSocketNotification("GOT-TIMETREE-EVENT", {"url": payload.url, "result": response.data});
+		  })
+		  .catch(function (error) {
+			that.sendSocketNotification("GOT-TIMETREE-EVENT", {"url": payload.url, "result": null});
+		  })
 	},
 
 	socketNotificationReceived: function(notification, payload) {
