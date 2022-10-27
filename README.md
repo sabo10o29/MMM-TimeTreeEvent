@@ -14,6 +14,8 @@ Display your TimeTree event on your magic mirror.
 ## UPDATE
 **1.0.0**
 - Simple viewer for TimeTree event.
+**1.0.1**
+- Temporary fix: Add request lib.
 
 ## Installation
 ```javascript
