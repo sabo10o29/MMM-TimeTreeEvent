@@ -21,6 +21,9 @@ Display your TimeTree event on your magic mirror.
 **1.0.2**
 - Migrate to axios from request.
 
+**1.0.3**
+- Added the feature to display the date at the head of the event.
+
 ## Installation
 ```javascript
 cd ~/MagicMirror/modules/
@@ -53,6 +56,8 @@ https://timetreeapp.com/personal_access_tokens
 |--------------------- |-----------
 | `upadteinterval`     | Update interval to get event from TimeTree.  <br><br>**Type:** `int` <br> **Default value:** `3 * 60 * 60 *1000 (3 hours)`
 | `timeFormat`         | Display the scheduled time based on [moment.js](https://momentjs.com/docs/). <br><br>**Type:** `String` <br> **Default value:** `HH:mm`
+| `showDate`           | If showDate is true, the date is displayed at the head of the event. <br><br>**Type:** `boolean` <br> **Default value:** `false`
+| `dateFormat`         | Display the scheduled date based on [moment.js](https://momentjs.com/docs/) if showDate option is true. <br><br>**Type:** `String` <br> **Default value:** `MM/DD`
 | `eventWordCount`     | Maximum length to show the event title. <br><br>**Type:** `int` <br> **Default value:** `10`
 | `days`               | Get events from today to n-th day. <br><br>**Type:** `int` <br> **Default value:** `1`
 | `title`              | Title name <br><br>**Type:** `String` <br> **Default value:** `Today's event　　`
