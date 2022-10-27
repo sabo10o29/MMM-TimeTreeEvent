@@ -16,6 +16,8 @@ Module.register("MMM-TimeTreeEvent",{
 		animationSpeed: 1000,
 		upadteInterval: 3 * 60 * 60 *1000, //msec
 		timeFormat: "HH:mm",
+		dateFormat: "MM/DD",
+		showDate: false,
 		eventWordCount: 10,
 		days: 1,
 		title: "Today's event　　",
@@ -64,6 +66,13 @@ Module.register("MMM-TimeTreeEvent",{
 			var event = this.todayEvents[i];
 			var eventItem = document.createElement("tr");
 			eventItem.className = "bright";
+			//Add date
+			if(this.config.showDate){
+				var date = document.createElement("td");
+				date.className = "date";
+				date.innerHTML = moment(event.start_at).format(this.config.dateFormat);
+				eventItem.appendChild(date);
+			}
 			// Add time
 			var time = document.createElement("td");
 			time.className = "time";
