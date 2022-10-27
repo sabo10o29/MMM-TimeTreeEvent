@@ -17,5 +17,8 @@
     "bugs": {
         "url": "https://github.com/sabo10o29/MMM-TimeTreeEvent/issues"
     },
-    "homepage": "https://github.com/sabo10o29/MMM-TimeTreeEvent#readme"
+    "homepage": "https://github.com/sabo10o29/MMM-TimeTreeEvent#readme",
+    "dependencies": {
+        "request": "^2.88.2"
+    }
 }
